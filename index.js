@@ -6,8 +6,6 @@ var fs = require('co-fs');
 
 module.exports = function(opt){
 
-  var pathname;
-
   if(typeof opt === 'string') {
     opt = {
       src: url.parse(opt).pathname
