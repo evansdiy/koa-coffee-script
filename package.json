@@ -1,0 +1,31 @@
+{
+  "name": "koa-coffee-script",
+  "version": "0.0.1",
+  "description": "Coffee-script middleware for Koa",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evansdiy/koa-coffee-script.git"
+  },
+  "keywords": [
+    "koa",
+    "coffee-script"
+  ],
+  "author": {
+    "name": "Evansdiy",
+    "email": "evansdiy163@163.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evansdiy/koa-coffee-script/issues"
+  },
+  "homepage": "https://github.com/evansdiy/koa-coffee-script",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "co-fs": "~1.2.0",
+    "coffee-script": "~1.9.3"
+  }
+}
