@@ -4,7 +4,9 @@ var coffeeScript = require('coffee-script');
 var updateSyntaxError = require('coffee-script/lib/coffee-script/helpers').updateSyntaxError;
 var fs = require('co-fs');
 
-module.exports = function(opt){
+module.exports = function(opt) {
+
+  var pathname;
 
   if(typeof opt === 'string') {
     opt = {
@@ -17,12 +19,12 @@ module.exports = function(opt){
   }
 
   return function*(next){
-    var obj = yield compile(this.req, this.res, opt);
+    yield compile(this.req, this.res, opt);
     yield next;
   };
 };
 
-function compile(req, res, opt){
+function compile(req, res, opt) {
 
   var pathname = url.parse(req.url).pathname;
   var filePath, file, compiledFilePath, compiledFile;
@@ -36,7 +38,7 @@ function compile(req, res, opt){
         file = yield fs.readFile(filePath, 'utf8');
       } catch(ex) {
         if(ex.code === 'ENOENT') {
-          file = 'console.warn("Missing file: ' + path.basename(filePath) + '")';
+          return;
         }
       }
 
@@ -47,7 +49,7 @@ function compile(req, res, opt){
         throw ex;
       }
       
-      fs.writeFile(compiledFilePath, compiledFile);
+      yield fs.writeFile(compiledFilePath, compiledFile);
     }
   }
 }
